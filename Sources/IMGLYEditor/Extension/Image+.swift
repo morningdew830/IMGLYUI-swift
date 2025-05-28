@@ -74,11 +74,11 @@ public extension IMGLY where Wrapped == Image {
   static let shape = Wrapped(systemName: "square.on.circle")
 
   /// An icon image for undo.
-  static let undo = Wrapped(systemName: "arrow.uturn.backward.circle")
+  static let undo = Wrapped("custom.undo.button", bundle: .module)
   /// An icon image for redo.
-  static let redo = Wrapped(systemName: "arrow.uturn.forward.circle")
+  static let redo = Wrapped("custom.redo.button", bundle: .module)
   /// An icon image for export.
-  static let export = Wrapped(systemName: "square.and.arrow.up")
+  static let export = Wrapped("custom.export.button", bundle: .module)
   /// An icon image for toggling preview mode.
   static let preview = Wrapped(systemName: "eye")
   /// An icon image for toggling pages mode.

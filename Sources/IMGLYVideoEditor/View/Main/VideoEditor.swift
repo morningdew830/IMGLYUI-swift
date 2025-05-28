@@ -35,9 +35,11 @@ public struct VideoEditor: View {
           NavigationBar.ItemGroup(placement: .topBarLeading) {
             NavigationBar.Buttons.closeEditor()
           }
-          NavigationBar.ItemGroup(placement: .topBarTrailing) {
+          NavigationBar.ItemGroup(placement: .principal) {
             NavigationBar.Buttons.undo()
             NavigationBar.Buttons.redo()
+          }
+          NavigationBar.ItemGroup(placement: .topBarTrailing) {
             NavigationBar.Buttons.export()
           }
         }
@@ -46,14 +48,14 @@ public struct VideoEditor: View {
         if let dockItems {
           try dockItems(context)
         } else {
-          Dock.Buttons.photoRoll()
+          // Dock.Buttons.photoRoll()
           Dock.Buttons.imglyCamera()
-          Dock.Buttons.overlaysLibrary()
+          // Dock.Buttons.overlaysLibrary()
           Dock.Buttons.textLibrary()
           Dock.Buttons.stickersAndShapesLibrary()
           Dock.Buttons.audioLibrary()
           Dock.Buttons.voiceover()
-          Dock.Buttons.reorder()
+          // Dock.Buttons.reorder()
         }
       }
   }

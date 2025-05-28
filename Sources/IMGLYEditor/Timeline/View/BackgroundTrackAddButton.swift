@@ -25,11 +25,11 @@ struct BackgroundTrackAddButton: View {
           Image("custom.photo.fill.on.rectangle.fill.badge.plus", bundle: .module)
         }
       }
-      Button {
-        interactor.addAssetToBackgroundTrack()
-      } label: {
-        Label("Library", systemImage: "play.square.stack")
-      }
+      // Button {
+      //   interactor.addAssetToBackgroundTrack()
+      // } label: {
+      //   Label("Library", systemImage: "play.square.stack")
+      // }
     } label: {
       HStack {
         Label {

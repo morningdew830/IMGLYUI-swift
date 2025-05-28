@@ -31,6 +31,7 @@ import SwiftUI
   }
 
   let fontLibrary = FontLibrary()
+  var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
   @Published @_spi(Internal) public private(set) var isCreating = true
   @Published private(set) var viewMode = EditorViewMode.edit
@@ -1341,7 +1342,19 @@ extension Interactor {
     viewMode = .pages
   }
 
+  func startBackgroundTask() {
+    backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "ExportSceneTask") { [weak self] in
+      self?.endBackgroundTask()
+    }
+  }
+
+  func endBackgroundTask() {
+    UIApplication.shared.endBackgroundTask(backgroundTask)
+    backgroundTask = .invalid
+  }
+
   func exportScene() {
+    startBackgroundTask()
     pause()
     let lastTask = exportTask
     lastTask?.cancel()
@@ -1368,6 +1381,7 @@ extension Interactor {
         }
       }
       isExporting = false
+      endBackgroundTask()
     }
   }
 
