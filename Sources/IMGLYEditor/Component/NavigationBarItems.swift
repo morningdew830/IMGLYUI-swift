@@ -47,7 +47,7 @@ public extension NavigationBar.Buttons {
   static func closeEditor(
     action: @escaping NavigationBar.Context.To<Void> = { $0.eventHandler.send(.closeEditor) },
     @ViewBuilder label: @escaping NavigationBar.Context.To<some View> = { _ in
-      NavigationLabel("Back", direction: .backward)
+      NavigationLabel("", direction: .backward)
         .accessibilityLabel("Close Editor")
     },
     isEnabled: @escaping NavigationBar.Context.To<Bool> = { _ in true },
