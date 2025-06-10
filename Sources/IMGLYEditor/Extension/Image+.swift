@@ -79,6 +79,8 @@ public extension IMGLY where Wrapped == Image {
   static let redo = Wrapped("custom.redo.button", bundle: .module)
   /// An icon image for export.
   static let export = Wrapped("custom.export.button", bundle: .module)
+  /// An icon image for closing editor.
+  static let closeEditor = Wrapped("custom.back.button", bundle: .module)
   /// An icon image for toggling preview mode.
   static let preview = Wrapped(systemName: "eye")
   /// An icon image for toggling pages mode.

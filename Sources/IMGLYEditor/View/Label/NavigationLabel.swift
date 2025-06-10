@@ -24,7 +24,8 @@ public struct NavigationLabel: View {
     HStack(spacing: 4.5) {
       switch direction {
       case .backward:
-        Image(systemName: direction.rawValue)
+        Image.imgly.closeEditor
+          .renderingMode(.original)
           .font(.headline)
           .padding(.leading, -8)
         Text(title)

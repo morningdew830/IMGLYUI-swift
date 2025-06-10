@@ -130,7 +130,7 @@ public extension NavigationBar.Buttons {
   static func export(
     action: @escaping NavigationBar.Context.To<Void> = { $0.eventHandler.send(.startExport) },
     @ViewBuilder label: @escaping NavigationBar.Context.To<some View> = { _ in
-      Label { Text("Export") } icon: { Image.imgly.export }
+      Label { Text("Export") } icon: { Image.imgly.export.renderingMode(.original) }
         .labelStyle(.imgly.adaptiveIconOnly)
     },
     isEnabled: @escaping NavigationBar.Context.To<Bool> = {
@@ -151,7 +151,16 @@ public extension NavigationBar.Buttons {
       }
     }
   ) -> some NavigationBar.Item {
-    NavigationBar.Button(id: ID.export, action: action, label: label, isEnabled: isEnabled, isVisible: isVisible)
+    NavigationBar.Button(
+      id: ID.export,
+      action: action,
+      label: { context in
+        let enabled = (try? isEnabled(context)) ?? false
+        try? label(context).opacity(enabled ? 1.0 : 0.3)
+      },
+      isEnabled: isEnabled,
+      isVisible: isVisible
+    )
   }
 
   /// Creates a ``NavigationBar/Button`` that toggles between preview and edit mode.
